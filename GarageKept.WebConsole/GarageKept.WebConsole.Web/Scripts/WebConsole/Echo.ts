@@ -2,7 +2,7 @@
     static instance = new Echo();
     isHtml = false;
     commandText = "echo";
-    description="echos any text entered";
+    description="Will echo any text entered";
     helpText = "usage: echo <text>";
     
     runCommand(parameters: string[]): string {

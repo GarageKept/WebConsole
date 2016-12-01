@@ -26,6 +26,11 @@ namespace GarageKept.WebConsole.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/webconsole").Include(
+                "~/Scripts/WebConsole/Console.js",
+                "~/Scripts/WebConsole/Echo.js",
+                "~/Scripts/WebConsole/startup.js"));
         }
     }
 }

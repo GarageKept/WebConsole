@@ -6,7 +6,7 @@ class WebConsole {
         this.allowServerCommands = false;
         this.url = "/api/console";
         if (!useCustomCss) {
-            $('head').append('<link href="Scripts/CommandLine/webcli.css" rel="stylesheet" />');
+            $('head').append('<link href="Scripts/webconsole/webcli.css" rel="stylesheet" />');
         }
         this.history = [""]; //Command history
         this.commandOffset = 0; //Reverse offset into history
@@ -115,7 +115,7 @@ class WebConsole {
         const tokens = txt.split(" ");
         const cmd = tokens[0].toUpperCase();
         // Non overrideable console commands
-        if (cmd === "CLS") {
+        if (cmd === "CLS" || cmd === "CLEAR") {
             this.outputEl.innerHTML = "";
             return 0;
         }

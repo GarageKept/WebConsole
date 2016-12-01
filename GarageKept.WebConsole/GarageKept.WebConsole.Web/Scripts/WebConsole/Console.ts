@@ -27,7 +27,7 @@
 
         constructor(useCustomCss: boolean = false) {
             if (!useCustomCss) {
-                $('head').append('<link href="Scripts/CommandLine/webcli.css" rel="stylesheet" />');
+                $('head').append('<link href="Scripts/webconsole/webcli.css" rel="stylesheet" />');
             }
 
             this.history = [""]; //Command history
@@ -159,7 +159,7 @@
             const cmd = tokens[0].toUpperCase();
 
             // Non overrideable console commands
-            if (cmd === "CLS") {
+            if (cmd === "CLS" || cmd === "CLEAR") {
                 this.outputEl.innerHTML = "";
                 return 0;
             } else if (cmd === "LS") {

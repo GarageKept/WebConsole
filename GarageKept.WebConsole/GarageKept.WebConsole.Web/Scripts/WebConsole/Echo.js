@@ -2,7 +2,7 @@ class Echo {
     constructor() {
         this.isHtml = false;
         this.commandText = "echo";
-        this.description = "echos any text entered";
+        this.description = "Will echo any text entered";
         this.helpText = "usage: echo <text>";
     }
     runCommand(parameters) {
