@@ -10,14 +10,23 @@ namespace GarageKept.WebConsole.Server.Controllers
 {
     public class ServerCommandController : ApiController, IServerEntryPoint
     {
-        public List<string> GetAvailableCommands()
+        private List<ConsoleCommand> Commands { get; set; } = new List<ConsoleCommand>();
+
+        public List<CommandInfo> GetAvailableCommands()
         {
             throw new NotImplementedException();
         }
 
-        public string ExecuteCommand(string command, string[] tokens)
+        public ConsoleResult ExecuteCommand(string command, List<string> tokens)
         {
-            throw new NotImplementedException();
+            var cmd = Commands.FirstOrDefault(c => c.CommandText.Contains(command));
+
+            if (cmd == null)
+            {
+                return new ConsoleResult();
+            }
+
+            return cmd.RunCommand(command, tokens);
         }
     }
 }

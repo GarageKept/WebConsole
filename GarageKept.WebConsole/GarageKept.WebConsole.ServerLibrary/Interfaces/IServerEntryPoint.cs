@@ -4,7 +4,7 @@ namespace GarageKept.WebConsole.ServerLibrary
 {
     public interface IServerEntryPoint
     {
-        List<string> GetAvailableCommands();
-        string ExecuteCommand(string command, string[] tokens);
+        List<CommandInfo> GetAvailableCommands();
+        ConsoleResult ExecuteCommand(string command, List<string> tokens);
     }
 }

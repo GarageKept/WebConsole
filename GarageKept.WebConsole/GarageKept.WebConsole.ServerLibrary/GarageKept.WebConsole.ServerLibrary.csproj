@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServerEntryPoint.cs" />
+    <Compile Include="CommandInfo.cs" />
+    <Compile Include="ConsoleCommand.cs" />
+    <Compile Include="ConsoleMessage.cs" />
+    <Compile Include="ConsoleResult.cs" />
+    <Compile Include="ConsoleResultStatus.cs" />
+    <Compile Include="Interfaces\IConsoleCommand.cs" />
+    <Compile Include="Interfaces\IServerEntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
