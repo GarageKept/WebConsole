@@ -1,8 +1,8 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 
-
     class WebConsole {
-        static localCommands: Map<string, IWebConsoleLocalCommand> = new Map < string, IWebConsoleLocalCommand>();
+        // static localCommands: Map<string, IWebConsoleLocalCommand> = new Map < string, IWebConsoleLocalCommand>();
+        static localCommands = new Array<IWebConsoleLocalCommand>();
 
         history: [string];
         commandOffset: number;
@@ -22,7 +22,7 @@
         url = "/api/console";
         
         registerCommand(command: IWebConsoleLocalCommand) {
-            WebConsole.localCommands.set(command.commandText.toUpperCase(), command);
+            WebConsole.localCommands.push(command);
         }
 
         constructor(useCustomCss: boolean = false) {
@@ -163,8 +163,9 @@
                 this.outputEl.innerHTML = "";
                 return 0;
             } else if (cmd === "LS") {
-                for (var key of WebConsole.localCommands.keys()) {
-                    this.writeLine(key + ": " + WebConsole.localCommands.get(key).description, "system");
+                this.writeLine(WebConsole.localCommands.length + " commands loaded");
+                for (let command of WebConsole.localCommands) {
+                    this.writeLine(command.commandText.toLowerCase() + ": " + command.description, "system");
                 }
                 return 0;
             } else if (cmd === "HELP" || cmd === "?" || cmd === "/?") {
@@ -172,9 +173,16 @@
                     this.writeLine("Use: help <command>", "system");
                     this.writeLine("for a list of commands use LS", "system");
                 } else {
-                    if (WebConsole.localCommands.has(tokens[1].toUpperCase())) {
-                        this.writeLine(WebConsole.localCommands.get(tokens[1].toUpperCase()).helpText, "system");
-                    } else {
+                    let found = false;
+
+                    for (let command of WebConsole.localCommands) {
+                        if (command.commandText.toUpperCase() === cmd) {
+                            this.writeLine(command.helpText, "system");
+                            found = true;
+                        }
+                    }
+
+                    if(!found){
                         this.writeLine("Command not found", "error");
                         this.writeLine("for a list of commands use LS", "system");
                     }
@@ -189,7 +197,14 @@
 
 
             //Client command:
-            let command = WebConsole.localCommands.get(cmd);
+            let command: IWebConsoleLocalCommand = null;
+
+            for (let localCommand of WebConsole.localCommands) {
+                if (localCommand.commandText.toUpperCase() === cmd) {
+                    command = localCommand;
+                }
+            }
+
             if (command != null) {
                 let result = command.runCommand(tokens);
                 if (command.isHtml) {
@@ -242,7 +257,7 @@
             this.scrollToBottom();
         }
 
-        writeLine(txt: string, cssSuffix?: string) {
+        public writeLine(txt: string, cssSuffix?: string) {
             const span = document.createElement("span");
             cssSuffix = cssSuffix || "ok";
             span.className = `console-${cssSuffix}`;

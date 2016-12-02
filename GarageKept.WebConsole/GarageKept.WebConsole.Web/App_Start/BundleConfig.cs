@@ -30,6 +30,7 @@ namespace GarageKept.WebConsole.Web
             bundles.Add(new ScriptBundle("~/bundles/webconsole").Include(
                 "~/Scripts/WebConsole/Console.js",
                 "~/Scripts/WebConsole/Echo.js",
+                "~/Scripts/WebConsole/Color.js",
                 "~/Scripts/WebConsole/startup.js"));
         }
     }
