@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GarageKept.WebConsole.ServerLibrary
+namespace GarageKept.WebConsole.ServerLibrary.Interfaces
 {
     public interface IServerEntryPoint
     {

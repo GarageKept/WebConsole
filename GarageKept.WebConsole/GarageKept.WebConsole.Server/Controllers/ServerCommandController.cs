@@ -5,16 +5,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using GarageKept.WebConsole.ServerLibrary;
+using GarageKept.WebConsole.ServerLibrary.Interfaces;
 
 namespace GarageKept.WebConsole.Server.Controllers
 {
     public class ServerCommandController : ApiController, IServerEntryPoint
     {
-        private List<ConsoleCommand> Commands { get; set; } = new List<ConsoleCommand>();
+        private List<IConsoleCommand> Commands { get; set; } = new List<IConsoleCommand>();
+
+        public ServerCommandController()
+        {
+        }
 
         public List<CommandInfo> GetAvailableCommands()
         {
-            throw new NotImplementedException();
+            var availableCommands = new List<CommandInfo>(Commands.Count);
+
+            return availableCommands;
         }
 
         public ConsoleResult ExecuteCommand(string command, List<string> tokens)
@@ -23,7 +30,7 @@ namespace GarageKept.WebConsole.Server.Controllers
 
             if (cmd == null)
             {
-                return new ConsoleResult();
+                return new MissingConsoleCommandResult();
             }
 
             return cmd.RunCommand(command, tokens);

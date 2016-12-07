@@ -47,6 +47,7 @@
     <Compile Include="ConsoleResultStatus.cs" />
     <Compile Include="Interfaces\IConsoleCommand.cs" />
     <Compile Include="Interfaces\IServerEntryPoint.cs" />
+    <Compile Include="MissingConsoleCommandResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
