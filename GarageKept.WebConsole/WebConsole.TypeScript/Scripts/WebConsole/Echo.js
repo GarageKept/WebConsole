@@ -1,4 +1,4 @@
-var Echo = (function () {
+var Echo = /** @class */ (function () {
     function Echo() {
         this.isHtml = false;
         this.commandText = "echo";

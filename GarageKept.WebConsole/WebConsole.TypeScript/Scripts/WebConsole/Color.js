@@ -1,4 +1,4 @@
-var Color = (function () {
+var Color = /** @class */ (function () {
     function Color() {
         this.isHtml = true;
         this.commandText = "color";

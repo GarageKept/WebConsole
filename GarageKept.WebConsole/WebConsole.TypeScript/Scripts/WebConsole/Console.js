@@ -1,5 +1,5 @@
 /// <reference path="../typings/jquery/jquery.d.ts" />
-var WebConsole = (function () {
+var WebConsole = /** @class */ (function () {
     function WebConsole(useCustomCss) {
         if (useCustomCss === void 0) { useCustomCss = false; }
         this.useControl = true;
@@ -81,16 +81,16 @@ var WebConsole = (function () {
         //Other keys (when input has focus)
         if (this.inputEl === document.activeElement) {
             switch (e.keyCode) {
-                case 13:
+                case 13://Enter
                     return this.runCmd();
-                case 38:
+                case 38://Up
                     if ((this.history.length + this.commandOffset) > 0) {
                         this.commandOffset--;
                         this.inputEl.value = this.history[this.history.length + this.commandOffset];
                         e.preventDefault();
                     }
                     break;
-                case 40:
+                case 40://Down
                     if (this.commandOffset < -1) {
                         this.commandOffset++;
                         this.inputEl.value = this.history[this.history.length + this.commandOffset];
