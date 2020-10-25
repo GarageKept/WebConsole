@@ -80,17 +80,18 @@ var WebConsole = /** @class */ (function () {
         }
         //Other keys (when input has focus)
         if (this.inputEl === document.activeElement) {
-            switch (e.keyCode) {
-                case 13://Enter
+            switch (e.keyCode) //http://keycode.info/
+             {
+                case 13: //Enter
                     return this.runCmd();
-                case 38://Up
+                case 38: //Up
                     if ((this.history.length + this.commandOffset) > 0) {
                         this.commandOffset--;
                         this.inputEl.value = this.history[this.history.length + this.commandOffset];
                         e.preventDefault();
                     }
                     break;
-                case 40://Down
+                case 40: //Down
                     if (this.commandOffset < -1) {
                         this.commandOffset++;
                         this.inputEl.value = this.history[this.history.length + this.commandOffset];

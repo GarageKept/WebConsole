@@ -2,7 +2,7 @@ var Color = /** @class */ (function () {
     function Color() {
         this.isHtml = true;
         this.commandText = "color";
-        this.description = "simply changes the color of the .test class";
+        this.description = "simply changes the color of the .console-system class";
         this.helpText = "usage: color <css color code>";
     }
     Color.prototype.runCommand = function (parameters) {
@@ -10,7 +10,7 @@ var Color = /** @class */ (function () {
         if (parameters.length > 1) {
             color = parameters[1];
         }
-        var style = "<style type='text/css' id'console-css'>.test{color: " + color + ";}</style>";
+        var style = "<style type='text/css' id'console-css'>.console-system{color: " + color + ";}</style>";
         $("head").append(style);
         return "<span style=\"color:" + color + ";\">Setting color to " + color + "</span>";
     };
